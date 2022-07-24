@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %} Products {% endblock title %}
+{% block body %}
+<div class="container mt-2" style="font-size: 1.4rem; color:black;">
+   <br>
+   <h2 class="display-2 text-center" style="color:white;font-family: Quicksand">Products</h2>
+   <hr>
+   <div class="row">
+      {% for i in myprod  %}
+      <div class="col-md-4 p-5">
+         <div class="card" style="width: 25rem; height: 55rem; margin: 1vh; ">
+            <center><img src="{{i.prod_image.url}}" class="card-img-top" alt="..." style="width:auto;height:30vh;"></center>
+            <div class="card-body" style="background-color: rgb(243, 240, 240); ">
+               <h6 class="card-title display-4" style="color:blue;font-weight:normal;">{{i.prod_name}}</h6>
+               <p style="color:black; font-weight: bold;">Price : {{i.prod_price}} Rs</p>
+               <p class="card-text">{{i.prod_descripton}}</p>
+               <p class="text-danger"><b>Offer valid till: {{i.prod_exp}}</b></p>
+               <a href="/orders" class="btn btn-outline-success btn-lg " style="color:white; background-color: rgb(137, 183, 69); bottom:2vh; position: absolute;">Order Now</a>
+            </div>
+         </div>
+      </div>
+      {% endfor %}
+   </div>
+</div>
+{% endblock body %}

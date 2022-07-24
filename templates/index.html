@@ -1,0 +1,98 @@
+{% block body %}
+{% load static %}
+<html>
+   
+   <head>
+      <link rel="icon" href="{% static 'images/icon.png' %}" type="image/x-icon" />
+      <title>ShopNow</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="{% static 'css/home.css' %}">
+      <script>
+         $('.navTrigger').click(function () {
+             $(this).toggleClass('active');
+             console.log("Clicked menu");
+             $("#mainListDiv").toggleClass("show_list");
+             $("#mainListDiv").fadeIn();
+         
+         });
+      </script>
+      <style>
+         ::-webkit-scrollbar{display: none;}
+      </style>
+   </head>
+   <div id="r">
+      <nav class="nav1 nav-custom">
+         <div class="container1">
+            <div class="logo">
+               <a href="/">ShopKart</a>
+            </div>
+            <div id="mainListDiv" class="main_list">
+               <ul class="nav1links">
+                  <li><a href="/products">Products</a></li>
+                  <li><a href="/orders">Orders</a></li>
+                  <li><a href="/contact">Contact</a></li>
+                  {% if request.user.is_authenticated %}
+                  <li><a href="/logout">Logout</a></li>
+                  {% else %}
+                  <li><a href="/signup">Sign Up</a></li>
+                  <li><a href="/login">Login</a></li>
+                  {% endif %}
+               </ul>
+            </div>
+            <span class="nav1Trigger">
+            <i></i>
+            <i></i>
+            <i></i>
+            </span>
+         </div>
+      </nav>
+      <section class="home"></section>
+      <div style="height: auto; padding-bottom: 5vh" >
+         <h2 class="myH2">Who are we?</h2>
+         <p class="myP">
+            Over a decade ago, we started a store to sell snowboards online. 
+            None of the ecommerce solutions at the time gave us the control 
+            we needed to be successful—so we built our own. 
+            Today, businesses of all sizes use Shopify, whether they’re selling
+             online, in retail stores, or on-the-go.
+            <br>
+            Our culture of care extends to our people,
+            stakeholders, customers and the planet! We do not
+            believe in a one size fits all strategy. Our benefits and
+            care policies are driven by empathy and customised
+            to the unique needs of individual Flipsters. Because
+            when Flipsters and their families are cared for, they
+            can focus on doing their best work. We put your
+            hopes, dreams and endeavours first - always.
+            <br>
+            We help people achieve independence by making it easier to start,
+             run, and grow a business. We believe the future of commerce has more
+              voices, not fewer, so we’re reducing the barriers to business ownership
+               to make commerce better for everyone.
+
+
+
+ </p>
+      </div>
+   </div>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+   <script>
+      $(window).scroll(function() {
+          if ($(document).scrollTop() > 50) {
+              $('.nav1').addClass('affix');
+              console.log("OK");
+          } else {
+              $('.nav1').removeClass('affix');
+          }
+      });
+      $('.nav1Trigger').click(function () {
+        $(this).toggleClass('active');
+        console.log("Clicked menu");
+        $("#mainListDiv").toggleClass("show_list");
+        $("#mainListDiv").fadeIn();
+      
+      });
+   </script>
+</html>
+{% endblock body %}

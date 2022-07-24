@@ -1,0 +1,78 @@
+{% load static %}
+<html>
+   <head>
+      <meta charset="utf-8">
+      <link rel="icon" href="{% static 'images/icon.png' %}" type="image/x-icon" />
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="{% static 'css/style.css' %}">
+      <title>
+         {% block title %}
+         {% endblock title %}
+      </title>
+      <style>
+         ::-webkit-scrollbar{display: none;}
+      </style>
+      <link rel="stylesheet" href="{% static 'css/home.css' %}">
+      <style>
+         .nav-custom{
+         background-color: black;
+         top:0%;
+         padding: 0%;
+         z-index:10;
+         }
+      </style>
+      <style>
+         body{
+            background-image:url("{% static 'images/bg.jpg' %}");
+            background-repeat:no-repeat;
+            background-size:cover;
+         }
+      </style>
+
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+   </head>
+
+   <body style="padding-top:10vh;">
+      <nav class="nav1 nav-custom">
+         <div class="container1">
+            <div class="logo">
+               <a href="/">ShopNow</a>
+            </div>
+            <div id="mainListDiv" class="main_list">
+               <ul class="nav1links">
+                  <li><a href="/products">Products</a></li>
+                  <li><a href="/orders">Orders</a></li>
+                  <li><a href="/contact">Contact</a></li>
+                  {% if request.user.is_authenticated %}
+                  <li><a href="/logout">Logout</a></li>
+                  {% else %}
+                  <li><a href="/signup">Sign Up</a></li>
+                  <li><a href="/login">Login</a></li>
+                  {% endif %}
+               </ul>
+            </div>
+            <span class="nav1Trigger">
+            <i></i>
+            <i></i>
+            <i></i>
+            </span>
+         </div>
+      </nav>
+   
+      {% block body %}
+      {% endblock body %}
+      <script src="static/js/bootstrap.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+      <script>
+               $('.nav1Trigger').click(function () {
+        $(this).toggleClass('active');
+        console.log("Clicked menu");
+        $("#mainListDiv").toggleClass("show_list");
+        $("#mainListDiv").fadeIn();
+      
+      });
+      </script>
+   </body>
+   </html>
+   

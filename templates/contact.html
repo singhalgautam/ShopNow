@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %} Contact {% endblock title %}
+{% block body %}
+
+<center>
+    <h1 class="display-3" style="color:white;font-family: Quicksand">CONTACT US</h1>
+</center>
+<div class="container h-100 mt-5" style="font-size:2.5rem;">
+   <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6 bg-light p-5">
+         {% include "messages.html" %}  
+         <form action="/contact" method="post">
+            {% csrf_token %}
+            <label for="name">Name</label>
+            <div class="form-group">
+               <input type="text" id="name" class="form-control mb-3" placeholder="Enter Your Name" name="name" style="font-size:1.5rem;" required>
+            </div>
+            <label for="email">Email</label>
+            <div class="form-group">
+               <input type="email" id="email" class="form-control mb-3" placeholder="Enter Your Email Address" name="email" value="{{user.username}}" style="font-size:1.5rem;" required>
+            </div>
+            <label for="num">Phone Number</label>
+            <div class="form-group">
+               <input type="number" id="num" class="form-control mb-3" placeholder="Enter Your Mobile number" name="num" style="font-size:1.5rem;" required>
+            </div>
+            <label for="desc">How can we help?</label>
+            <div class="form-group">
+               <textarea type="text" id="desc" class="form-control mb-3"  name="desc" style="font-size:1.5rem;" required></textarea>
+            </div>
+            <div class="d-grid gap-2">
+               <button class="btn btn-dark" type="submit" style="font-size:1.5rem;">Submit</button>
+            </div>
+         </form>
+      </div>
+      <div class="col-md-3"></div>
+   </div>
+</div>
+{% endblock body %}
