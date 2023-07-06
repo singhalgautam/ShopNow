@@ -32,6 +32,6 @@ cd ShopNow
 pip install -r requirements.txt
 ```
 ```bash
-python3 manage.py runserver
+python manage.py runserver
 ```
 Made with love ❤️ by [Gautam Singhal](https://github.com/singhalgautam)
